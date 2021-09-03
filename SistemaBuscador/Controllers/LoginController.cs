@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SistemaBuscador.Models;
-using SistemaBuscador.Respositories;
+using SistemaBuscador.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

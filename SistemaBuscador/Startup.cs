@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SistemaBuscador.Filters;
-using SistemaBuscador.Respositories;
+using SistemaBuscador.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

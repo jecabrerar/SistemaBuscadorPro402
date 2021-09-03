@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SistemaBuscador.Entities;
-using SistemaBuscador.Respositories;
+using SistemaBuscador.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SistemaBuscador.Test.PruebasUnitarias.Servicios
 {
     [TestClass]
-    class LoginRepositoryEFTest :TestBase
+    public class LoginRepositoryEFTest :TestBase
     {
         [TestMethod]        
         public async Task UsuarioNoExiste()
@@ -49,7 +49,7 @@ namespace SistemaBuscador.Test.PruebasUnitarias.Servicios
             //Ejecucion
 
             var nombreUsuario = "Usuario1";
-            var password = "Password";
+            var password = "Password1";
             var repo = new LoginRepositoryEF(context2);
             var respuesta = await repo.UserExist(nombreUsuario, password);
 

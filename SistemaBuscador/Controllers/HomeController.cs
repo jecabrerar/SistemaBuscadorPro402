@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using SistemaBuscador.Respositories;
+using SistemaBuscador.Repositories;
 using Microsoft.AspNetCore.Http;
 using SistemaBuscador.Filters;
 

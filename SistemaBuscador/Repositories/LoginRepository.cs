@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Respositories
+namespace SistemaBuscador.Repositories
 {
     public class LoginRepository : ILoginRepository
     {

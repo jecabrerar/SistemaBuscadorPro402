@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Respositories
+namespace SistemaBuscador.Repositories
 {
     public class LoginRepositoryEF : ILoginRepository
     {
