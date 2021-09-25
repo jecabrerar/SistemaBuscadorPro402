@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Entities
+namespace SistemaBuscador.Models
 {
-    public class Usuario
+    public class UsuarioListaModel
     {
         public int Id { get; set; }
-        public string  Nombres { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int RolId { get; set; }
-        public string NombreUsuario { get; set; }
-
-        public string Password { get; set; }
     }
 }

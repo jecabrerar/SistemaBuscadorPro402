@@ -15,6 +15,7 @@ namespace SistemaBuscador
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Rol> Roles { get; set; }
         
     }
 }

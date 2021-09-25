@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SistemaBuscador.Entities;
 using SistemaBuscador.Repositories;
+using SistemaBuscador.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,16 +19,19 @@ namespace SistemaBuscador.Test.PruebasUnitarias.Servicios
             //Preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
+            
             context.Usuarios.Add(new Usuario() { NombreUsuario = "Usuario1", Password="Password1" });
             await context.SaveChangesAsync();
 
             var context2 = BuildContex(nombreBd);
+            var securidad = new Mock<ISeguridad>();
+            securidad.Setup(x => x.Encriptar(It.IsAny<string>())).Returns("aaabbgggffjjyyuoosaddsddsasashjkjk");
 
             //Ejecucion
 
             var nombreUsuario = "Usuario2";
             var password = "Password2";
-            var repo = new LoginRepositoryEF(context2);
+            var repo = new LoginRepositoryEF(context2, securidad.Object);
             var respuesta = await repo.UserExist(nombreUsuario, password);
 
             //Verificacion
@@ -41,16 +46,17 @@ namespace SistemaBuscador.Test.PruebasUnitarias.Servicios
             //Preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
-            context.Usuarios.Add(new Usuario() { NombreUsuario = "Usuario1", Password = "Password1" });
+            context.Usuarios.Add(new Usuario() { NombreUsuario = "Usuario1", Password = "aaabbgggffjjyyuoosaddsddsasashjkjk" });
             await context.SaveChangesAsync();
 
             var context2 = BuildContex(nombreBd);
-
+            var securidad = new Mock<ISeguridad>();
+            securidad.Setup(x => x.Encriptar(It.IsAny<string>())).Returns("aaabbgggffjjyyuoosaddsddsasashjkjk");
             //Ejecucion
 
             var nombreUsuario = "Usuario1";
             var password = "Password1";
-            var repo = new LoginRepositoryEF(context2);
+            var repo = new LoginRepositoryEF(context2, securidad.Object);
             var respuesta = await repo.UserExist(nombreUsuario, password);
 
             //Verificacion
