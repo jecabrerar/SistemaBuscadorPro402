@@ -1,4 +1,4 @@
-﻿using SistemaBuscador.Models;
+﻿using Evaluacion.JCabrera.SistemaBuscador.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using SistemaBuscador.Repositories;
+using Evaluacion.JCabrera.SistemaBuscador.Repositories;
 using Microsoft.AspNetCore.Http;
-using SistemaBuscador.Filters;
+using Evaluacion.JCabrera.SistemaBuscador.Filters;
 
-namespace SistemaBuscador.Controllers
+namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
 {
     [ServiceFilter(typeof(SessionFilter))]
     public class HomeController : Controller

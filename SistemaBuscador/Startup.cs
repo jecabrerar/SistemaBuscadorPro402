@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SistemaBuscador.Filters;
-using SistemaBuscador.Repositories;
-using SistemaBuscador.Utilidades;
+using Evaluacion.JCabrera.SistemaBuscador.Filters;
+using Evaluacion.JCabrera.SistemaBuscador.Repositories;
+using Evaluacion.JCabrera.SistemaBuscador.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador
+namespace Evaluacion.JCabrera.SistemaBuscador
 {
     public class Startup
     {

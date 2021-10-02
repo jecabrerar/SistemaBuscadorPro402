@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
-using SistemaBuscador.Repositories;
+using Evaluacion.JCabrera.SistemaBuscador.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Test
+namespace Evaluacion.JCabrera.SistemaBuscador.Test
 {
     public class LoginRepositoryEFTrue : ILoginRepository
     {

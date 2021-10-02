@@ -1,22 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SistemaBuscador.Models;
-using SistemaBuscador.Repositories;
+using Evaluacion.JCabrera.SistemaBuscador.Models;
+using Evaluacion.JCabrera.SistemaBuscador.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Controllers
+namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly IUsuarioRepository _usuarioRepository;
-        private readonly IRolRepository _rolRepository;
+        private readonly IUsuarioRepository _usuarioRepository;        
 
-        public UsuariosController(IUsuarioRepository usuarioRepository, IRolRepository rolRepository)
+        public UsuariosController(IUsuarioRepository usuarioRepository)
         {
-            _usuarioRepository = usuarioRepository;
-            _rolRepository = rolRepository;
+            _usuarioRepository = usuarioRepository;            
         }
         public async Task<IActionResult> Index()
         {
@@ -24,9 +22,10 @@ namespace SistemaBuscador.Controllers
             return View(listaUsuario);
         }
 
-        public IActionResult NuevoUsuario()
+        public async Task<IActionResult> NuevoUsuario()
         {
-            return View();
+            var usuarioCreacion = await _usuarioRepository.UsuarioCreacionModel();
+            return View(usuarioCreacion);
         }
 
         [HttpPost]
@@ -36,9 +35,9 @@ namespace SistemaBuscador.Controllers
             {
                 //guardar usuario en bd
                await  _usuarioRepository.InsertarUsuario(model);
-                return  RedirectToAction("Index");
+                return  RedirectToAction("Index","Usuarios");
             }
-            return View(model);
+            return View("NuevoUsuario", model);
         }
 
         public async Task<IActionResult> ActualizarUsuario([FromRoute] int id)
@@ -54,9 +53,9 @@ namespace SistemaBuscador.Controllers
             {
                 //guardar usuario en bd
                 await _usuarioRepository.ActualizarUsuario(model);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Usuarios");
             }
-            return View(model);
+            return View("ActualizarUsuario", model);
         }
 
         public IActionResult CambiarPassword(int id)
@@ -71,12 +70,12 @@ namespace SistemaBuscador.Controllers
             if (ModelState.IsValid)
             {
                 await _usuarioRepository.ActualizarPassword(model);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Usuarios");
             }
 
             ViewBag.idUsuario = model.Id;
 
-            return View(model);
+            return View("CambiarPassword", model);
 
         }
 
@@ -92,7 +91,7 @@ namespace SistemaBuscador.Controllers
         {
             await _usuarioRepository.EliminarUsuario(model.Id);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Usuarios");
         }
 
 

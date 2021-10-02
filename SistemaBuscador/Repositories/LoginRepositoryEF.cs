@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using SistemaBuscador.Utilidades;
+using Evaluacion.JCabrera.SistemaBuscador.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Repositories
+namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
 {
     public class LoginRepositoryEF : ILoginRepository
     {

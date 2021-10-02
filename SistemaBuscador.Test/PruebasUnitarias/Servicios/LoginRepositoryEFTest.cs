@@ -1,14 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SistemaBuscador.Entities;
-using SistemaBuscador.Repositories;
-using SistemaBuscador.Utilidades;
+using Evaluacion.JCabrera.SistemaBuscador.Entities;
+using Evaluacion.JCabrera.SistemaBuscador.Repositories;
+using Evaluacion.JCabrera.SistemaBuscador.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Test.PruebasUnitarias.Servicios
+namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.Servicios
 {
     [TestClass]
     public class LoginRepositoryEFTest :TestBase

@@ -1,10 +1,10 @@
-﻿using SistemaBuscador.Models;
+﻿using Evaluacion.JCabrera.SistemaBuscador.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Repositories
+namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
 {
     public interface IUsuarioRepository
     {
@@ -14,5 +14,6 @@ namespace SistemaBuscador.Repositories
         Task InsertarUsuario(UsuarioCreacionModel model);
         Task<List<UsuarioListaModel>> ObtenerListaUsuarios();
         Task<UsuarioActualizarModel> ObtenerUsuarioPorId(int id);
+        Task<UsuarioCreacionModel> UsuarioCreacionModel();
     }
 }

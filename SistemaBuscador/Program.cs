@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador
+namespace Evaluacion.JCabrera.SistemaBuscador
 {
     public class Program
     {

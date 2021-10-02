@@ -1,23 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SistemaBuscador.Entities;
-using SistemaBuscador.Models;
-using SistemaBuscador.Utilidades;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Evaluacion.JCabrera.SistemaBuscador.Entities;
+using Evaluacion.JCabrera.SistemaBuscador.Models;
+using Evaluacion.JCabrera.SistemaBuscador.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Repositories
+namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
         private readonly ApplicationDbContext _context;
         private readonly ISeguridad _seguridad;
+        private readonly IRolRepository _rolRepository;
 
-        public UsuarioRepository(ApplicationDbContext context, ISeguridad seguridad)
+        public UsuarioRepository(ApplicationDbContext context, ISeguridad seguridad, IRolRepository rolRepository)
         {
             _context = context;
             _seguridad = seguridad;
+            _rolRepository = rolRepository;
         }
         public async Task InsertarUsuario(UsuarioCreacionModel model)
         {
@@ -93,6 +96,15 @@ namespace SistemaBuscador.Repositories
             _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync();
             
+        }
+
+        public async Task<UsuarioCreacionModel> UsuarioCreacionModel()
+        {
+            var roles = await _rolRepository.ObtenerListaRoles();
+            var respuesta = new UsuarioCreacionModel();
+            respuesta.Roles = new SelectList(roles, "Id", "Nombre");
+
+            return respuesta;
         }
     }
 }

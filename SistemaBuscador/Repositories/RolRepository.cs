@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaBuscador.Entities;
-using SistemaBuscador.Models;
+using Evaluacion.JCabrera.SistemaBuscador.Entities;
+using Evaluacion.JCabrera.SistemaBuscador.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Repositories
+namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
 {
     public class RolRepository : IRolRepository
     {

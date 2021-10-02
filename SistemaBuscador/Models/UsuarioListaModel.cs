@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Models
+namespace Evaluacion.JCabrera.SistemaBuscador.Models
 {
     public class UsuarioListaModel
     {

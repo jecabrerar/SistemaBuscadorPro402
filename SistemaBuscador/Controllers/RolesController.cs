@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SistemaBuscador.Models;
-using SistemaBuscador.Repositories;
+using Evaluacion.JCabrera.SistemaBuscador.Models;
+using Evaluacion.JCabrera.SistemaBuscador.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Controllers
+namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
 {
     public class RolesController : Controller
     {
@@ -35,15 +35,15 @@ namespace SistemaBuscador.Controllers
             {
                 //guardar usuario en bd
                 await _repository.InsertarRol(model);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Roles");
             }
-            return View(model);
+            return View("NuevoRol", model);
         }
 
         public async Task<IActionResult> ActualizarRol([FromRoute] int id)
         {
             var usuario = await _repository.ObtenerRolPorId(id);
-            return View(usuario);
+            return View("ActualizarRol", usuario);
         }
 
         [HttpPost]
@@ -53,9 +53,9 @@ namespace SistemaBuscador.Controllers
             {
                 //guardar usuario en bd
                 await _repository.ActualizarRol(model);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Roles");
             }
-            return View(model);
+            return View("ActualizarRol", model);
         }
 
 
@@ -71,7 +71,7 @@ namespace SistemaBuscador.Controllers
         {
             await _repository.EliminarRol(model.Id);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Roles");
         }
 
     }

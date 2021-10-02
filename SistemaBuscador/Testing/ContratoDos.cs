@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Testing
+namespace Evaluacion.JCabrera.SistemaBuscador.Testing
 {
     public class ContratoDos : IContrato
     {

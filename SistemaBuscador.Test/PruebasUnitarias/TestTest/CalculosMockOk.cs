@@ -1,9 +1,9 @@
-﻿using SistemaBuscador.Testing;
+﻿using Evaluacion.JCabrera.SistemaBuscador.Testing;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SistemaBuscador.Test.PruebasUnitarias.TestTest
+namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.TestTest
 {
     public class CalculosMockOk : ICalculos
     {

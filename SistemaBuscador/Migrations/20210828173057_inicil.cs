@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SistemaBuscador.Migrations
+namespace Evaluacion.JCabrera.SistemaBuscador.Migrations
 {
     public partial class inicil : Migration
     {

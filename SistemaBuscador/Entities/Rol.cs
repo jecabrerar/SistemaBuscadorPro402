@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Entities
+namespace Evaluacion.JCabrera.SistemaBuscador.Entities
 {
     public class Rol
     {

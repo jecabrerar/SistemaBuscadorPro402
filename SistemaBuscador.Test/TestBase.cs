@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaBuscador;
+using Evaluacion.JCabrera.SistemaBuscador;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SistemaBuscador.Test
+namespace Evaluacion.JCabrera.SistemaBuscador.Test
 {
     public class TestBase
     {

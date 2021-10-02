@@ -1,6 +1,6 @@
 using System;
 
-namespace SistemaBuscador.Models
+namespace Evaluacion.JCabrera.SistemaBuscador.Models
 {
     public class ErrorViewModel
     {

@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SistemaBuscador.Controllers;
-using SistemaBuscador.Models;
-using SistemaBuscador.Repositories;
+using Evaluacion.JCabrera.SistemaBuscador.Controllers;
+using Evaluacion.JCabrera.SistemaBuscador.Models;
+using Evaluacion.JCabrera.SistemaBuscador.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Test.PruebasUnitarias.Controladores
+namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.Controladores
 {
     [TestClass]
     public class LoginControllerTest

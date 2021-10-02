@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SistemaBuscador.Models;
-using SistemaBuscador.Repositories;
-using SistemaBuscador.Testing;
+using Evaluacion.JCabrera.SistemaBuscador.Models;
+using Evaluacion.JCabrera.SistemaBuscador.Repositories;
+using Evaluacion.JCabrera.SistemaBuscador.Testing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Controllers
+namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
 {
     public class LoginController : Controller
     {

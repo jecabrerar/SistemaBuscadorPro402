@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Repositories
+namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
 {
     public interface ILoginRepository
     {

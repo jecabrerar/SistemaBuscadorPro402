@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SistemaBuscador;
+using Evaluacion.JCabrera.SistemaBuscador;
 
-namespace SistemaBuscador.Migrations
+namespace Evaluacion.JCabrera.SistemaBuscador.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot

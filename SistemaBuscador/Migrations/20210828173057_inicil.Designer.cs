@@ -4,9 +4,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SistemaBuscador;
 
-namespace SistemaBuscador.Migrations
+namespace Evaluacion.JCabrera.SistemaBuscador.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210828173057_inicil")]

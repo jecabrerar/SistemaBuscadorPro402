@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaBuscador.Models
+namespace Evaluacion.JCabrera.SistemaBuscador.Models
 {
     public class UsuarioCreacionModel
     {
@@ -32,5 +33,7 @@ namespace SistemaBuscador.Models
         [MinLength(8, ErrorMessage ="El campo {0} debe tener como minimo {1} caracteres")]
         [Compare("Password", ErrorMessage ="Las contraseñas no son iguales")]
         public string RePassword { get; set; }
+
+        public SelectList Roles { get; set; }
     }
 }
