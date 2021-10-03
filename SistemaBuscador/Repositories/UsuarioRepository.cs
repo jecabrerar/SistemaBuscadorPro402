@@ -49,7 +49,7 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
         public async Task<List<UsuarioListaModel>> ObtenerListaUsuarios()
         {
             var respuesta = new List<UsuarioListaModel>();
-            var listaBd = await _context.Usuarios.ToListAsync();
+            var listaBd = await _context.Usuarios.Include(x=> x.Rol).ToListAsync();
 
             foreach (var usuariobd in listaBd)
             {
@@ -58,7 +58,8 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
                     Nombres = usuariobd.Nombres,
                     Apellidos = usuariobd.Apellidos,
                     NombreUsuario = usuariobd.NombreUsuario,
-                    RolId = usuariobd.RolId
+                    RolId = usuariobd.RolId,
+                    Rol = new RolListaModel() { Id= usuariobd.Rol.Id, Nombre= usuariobd.Rol.Nombre}                    
                 };
                 respuesta.Add(newUsuarioLista);
             }
@@ -69,7 +70,7 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
         public async Task<UsuarioActualizarModel> ObtenerUsuarioPorId(int id)
         {
             var respuesta = new UsuarioActualizarModel() { };
-            var usuariodb = await _context.Usuarios.FirstOrDefaultAsync(x => x.Id == id); //Linq
+            var usuariodb = await _context.Usuarios.Include(x=> x.Rol).FirstOrDefaultAsync(x => x.Id == id); //Linq
             if (usuariodb != null)
             {
                 respuesta.Id = usuariodb.Id;
@@ -77,7 +78,10 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
                 respuesta.Apellidos = usuariodb.Apellidos;
                 respuesta.NombreUsuario = usuariodb.NombreUsuario;
                 respuesta.RolId = usuariodb.RolId;
+                respuesta.Rol = new RolActualizarModel() { Id = usuariodb.Rol.Id, Nombre = usuariodb.Rol.Nombre };
             }
+            var roles = await _rolRepository.ObtenerListaRoles();            
+            respuesta.Roles = new SelectList(roles, "Id", "Nombre");
 
             return respuesta;
         }

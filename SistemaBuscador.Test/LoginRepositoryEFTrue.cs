@@ -11,12 +11,17 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test
     {
         public void SetSessionAndCookie(HttpContext context)
         {
-            
+            throw new NotImplementedException();
         }
 
         public async Task<bool> UserExist(string usuario, string password)
         {
             return await Task.FromResult(true);
+        }
+
+        void ILoginRepository.CloseSessionAndCookie(HttpContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 }

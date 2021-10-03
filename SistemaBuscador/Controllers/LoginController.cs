@@ -44,5 +44,11 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
             }
             return View("Index", model);
         }
+
+        public IActionResult CerrarSesion()
+        {
+            _loginRepository.CloseSessionAndCookie(HttpContext);
+            return RedirectToAction("Index", "Login");
+        }
     }
 }

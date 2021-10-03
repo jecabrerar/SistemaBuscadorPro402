@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Models
         [Display(Name = "Rol")]
         [Required(ErrorMessage = "El campo {0} es requerido")]
         public int? RolId { get; set; }
-        
+
+        public RolActualizarModel Rol { get; set; }
+        public SelectList Roles { get; set; }
     }
 }

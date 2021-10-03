@@ -11,5 +11,6 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
         Task<bool> UserExist(string usuario, string password);
 
         void SetSessionAndCookie(HttpContext context);
+        void CloseSessionAndCookie(HttpContext context);
     }
 }

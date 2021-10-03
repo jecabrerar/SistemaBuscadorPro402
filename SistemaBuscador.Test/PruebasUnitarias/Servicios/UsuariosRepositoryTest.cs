@@ -22,17 +22,18 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.Servicios
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
             var seguridadService = new Mock<ISeguridad>();
-            var rolService = new Mock<IRolRepository>();
+            var rolService = new RolRepository(context);
 
             context.Roles.Add(new Rol() { Id = 1, Nombre = "Rol 1" });
             await context.SaveChangesAsync();
 
-            var repo = new UsuarioRepository(context, seguridadService.Object, rolService.Object);
+            var repo = new UsuarioRepository(context, seguridadService.Object, rolService);
             var modelo = new UsuarioCreacionModel() { Nombres="Nombre Test", Apellidos="Apellido test", NombreUsuario="test1", Password= seguridadService.Object.Encriptar("test"), RePassword= seguridadService.Object.Encriptar("test"), RolId=1 };
 
             //ejecucion
             await repo.InsertarUsuario(modelo);
             var context2 = BuildContex(nombreBd);
+
             var lista = await context2.Usuarios.ToListAsync();
             var resultado = lista.Count;
             //verificacion
@@ -46,8 +47,8 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.Servicios
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
             var seguridadService = new Mock<ISeguridad>();
-            var rolService = new Mock<IRolRepository>();
             
+
             context.Roles.Add(new Rol() { Id = 1, Nombre = "Rol 1" });
             context.Roles.Add(new Rol() { Id = 2, Nombre = "Rol 2" });
 
@@ -55,7 +56,9 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.Servicios
             await context.SaveChangesAsync();
 
             var context2 = BuildContex(nombreBd);
-            var repo = new UsuarioRepository(context2, seguridadService.Object, rolService.Object);
+            var rolService = new RolRepository(context2);
+
+            var repo = new UsuarioRepository(context2, seguridadService.Object, rolService);
             var model = new UsuarioActualizarModel() { Id = 1, Nombres = "Nombre test modificado", Apellidos = "Apellidos test modificado", RolId=2 };
 
             //ejecucion
@@ -78,17 +81,19 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.Servicios
             //preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
-
+            
+            context.Roles.Add(new Rol() { Id = 1, Nombre = "Rol 1" });
             context.Usuarios.Add(new Usuario() { Id = 1, RolId = 1, Nombres = "Nombre test 1", Apellidos = "Apellidos test 1", NombreUsuario = "UsuarioTest1", Password = "ClaveTest1" });
             context.Usuarios.Add(new Usuario() { Id = 2, RolId = 1, Nombres = "Nombre test 2", Apellidos = "Apellidos test 2", NombreUsuario = "UsuarioTest2", Password = "ClaveTest2" });
             context.Usuarios.Add(new Usuario() { Id = 3, RolId = 1, Nombres = "Nombre test 3", Apellidos = "Apellidos test 3", NombreUsuario = "UsuarioTest2", Password = "ClaveTest3" });
             await context.SaveChangesAsync();
 
-            var seguridadService = new Mock<ISeguridad>();
-            var rolService = new Mock<IRolRepository>();
-
             var context2 = BuildContex(nombreBd);
-            var repo = new UsuarioRepository(context2, seguridadService.Object, rolService.Object);
+
+            var seguridadService = new Mock<ISeguridad>();
+            var rolService = new RolRepository(context2);
+
+            var repo = new UsuarioRepository(context2, seguridadService.Object, rolService);
 
             //ejecucion
             var usuListaModels = await repo.ObtenerListaUsuarios();
@@ -106,14 +111,19 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.Servicios
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
 
+            context.Roles.Add(new Rol() { Id = 1, Nombre = "Rol 1" });
+            context.Roles.Add(new Rol() { Id = 2, Nombre = "Rol 2" });
+            context.Roles.Add(new Rol() { Id = 3, Nombre = "Rol 3" });
+            context.Roles.Add(new Rol() { Id = 4, Nombre = "Rol 4" });
             context.Usuarios.Add(new Usuario() { Id = 1, RolId = 1, Nombres = "Nombre test 1", Apellidos = "Apellidos test 1", NombreUsuario = "UsuarioTest1", Password = "ClaveTest1" });
             await context.SaveChangesAsync();
+            
+            var context2 = BuildContex(nombreBd);
 
             var seguridadService = new Mock<ISeguridad>();
-            var rolService = new Mock<IRolRepository>();
-
-            var context2 = BuildContex(nombreBd);
-            var repo = new UsuarioRepository(context2, seguridadService.Object, rolService.Object);
+            var rolService = new RolRepository(context2);
+            
+            var repo = new UsuarioRepository(context2, seguridadService.Object, rolService);
 
             //ejecucion
             var usuDeLaBd = await repo.ObtenerUsuarioPorId(1);
@@ -139,7 +149,7 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasUnitarias.Servicios
                 Password = seguridadService.Object.Encriptar("ClaveTest") 
             });
             await context.SaveChangesAsync();
-            
+
             var rolService = new Mock<IRolRepository>();
 
             var context2 = BuildContex(nombreBd);

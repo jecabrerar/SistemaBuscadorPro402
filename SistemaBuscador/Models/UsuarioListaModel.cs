@@ -12,5 +12,7 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Models
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int RolId { get; set; }
+
+        public RolListaModel Rol { get; set; }
     }
 }

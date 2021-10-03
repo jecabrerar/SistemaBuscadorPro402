@@ -16,6 +16,12 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
             context.Response.Cookies.Append("sessionId", sessionId.ToString());
         }
 
+        public void CloseSessionAndCookie(HttpContext context)
+        {
+            context.Session.Remove("sessionId");
+            context.Response.Cookies.Delete("sessionId");
+        }
+
         public async Task<bool> UserExist(string usuario, string password)
         {
             var resultado = false;

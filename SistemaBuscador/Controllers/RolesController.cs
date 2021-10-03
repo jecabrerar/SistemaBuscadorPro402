@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Evaluacion.JCabrera.SistemaBuscador.Filters;
 
 namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
 {
+    [ServiceFilter(typeof(SessionFilter))]
     public class RolesController : Controller
     {
         private readonly IRolRepository _repository;
@@ -63,7 +65,7 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
         {
             var usuario = await _repository.ObtenerRolPorId(id);
 
-            return View(usuario);
+            return View("EliminarRol", usuario);
         }
 
         [HttpPost]

@@ -12,6 +12,7 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
     {
         private readonly ApplicationDbContext _context;
         private readonly ISeguridad _seguridad;
+        private readonly string  SESSION_NAME = "sessionId";
 
         public LoginRepositoryEF(ApplicationDbContext context, ISeguridad seguridad)
         {
@@ -21,9 +22,10 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
         public void SetSessionAndCookie(HttpContext context)
         {
             Guid sessionId = Guid.NewGuid();
-            context.Session.SetString("sessionId", sessionId.ToString());
-            context.Response.Cookies.Append("sessionId", sessionId.ToString());
+            context.Session.SetString(SESSION_NAME, sessionId.ToString());
+            context.Response.Cookies.Append(SESSION_NAME, sessionId.ToString());
         }
+        
 
         public async Task<bool> UserExist(string usuario, string password)
         {
@@ -37,6 +39,12 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Repositories
             }
 
             return resultado;
+        }
+
+        void ILoginRepository.CloseSessionAndCookie(HttpContext context)
+        {
+            context.Session.Remove(SESSION_NAME);
+            context.Response.Cookies.Delete(SESSION_NAME);
         }
     }
 }

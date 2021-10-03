@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Evaluacion.JCabrera.SistemaBuscador.Filters;
 
 namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
 {
+    [ServiceFilter(typeof(SessionFilter))]
     public class UsuariosController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;        
