@@ -45,7 +45,7 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
         public async Task<IActionResult> ActualizarUsuario([FromRoute] int id)
         {
             var usuario = await _usuarioRepository.ObtenerUsuarioPorId(id);
-            return View(usuario);
+            return View("ActualizarUsuario", usuario);
         }
 
         [HttpPost]
@@ -85,7 +85,7 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Controllers
         {
             var usuario = await _usuarioRepository.ObtenerUsuarioPorId(id);
 
-            return View(usuario);
+            return View("EliminarUsuario", usuario);
         }
 
         [HttpPost]
