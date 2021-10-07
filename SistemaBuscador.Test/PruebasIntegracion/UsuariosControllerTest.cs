@@ -6,7 +6,6 @@ using Evaluacion.JCabrera.SistemaBuscador.Utilidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,13 +22,13 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasIntegracion
             //preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
-            var seguridadService = new Mock<ISeguridad>();
+            var seguridadService = new Seguridad();
             var rolService = new RolRepository(context);
 
             context.Roles.Add(new Rol() { Id = 1, Nombre = "Rol 1" });
             await context.SaveChangesAsync();
 
-            var usuarioService = new UsuarioRepository(context, seguridadService.Object, rolService);
+            var usuarioService = new UsuarioRepository(context, seguridadService, rolService);
             var model = new UsuarioCreacionModel() { NombreUsuario = "user1", Apellidos = "apellido 1", Nombres="Usuario 1 Test", Password= "password1", RePassword= "password1", RolId = 1 };
 
             var controller = new UsuariosController(usuarioService);
@@ -49,9 +48,9 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasIntegracion
             //preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
-            var seguridadService = new Mock<ISeguridad>();
+            var seguridadService = new Seguridad();
             var rolService = new RolRepository(context);
-            var usuarioService = new UsuarioRepository(context, seguridadService.Object, rolService);
+            var usuarioService = new UsuarioRepository(context, seguridadService, rolService);
 
             context.Roles.Add(new Rol() { Id = 1, Nombre = "Rol 1" });
             var usuario = new Usuario() { NombreUsuario = "user1", Apellidos = "apellido 1", Nombres = "Usuario 1 Test", Password = "password1", RolId = 1};
@@ -80,9 +79,9 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasIntegracion
             //preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
-            var seguridadService = new Mock<ISeguridad>();
+            var seguridadService = new Seguridad();
             var rolService = new RolRepository(context);
-            var usuarioService = new UsuarioRepository(context, seguridadService.Object, rolService);
+            var usuarioService = new UsuarioRepository(context, seguridadService, rolService);
 
             context.Roles.Add(new Rol() { Id = 1, Nombre = "Rol 1" });
             var usuario = new Usuario() { NombreUsuario = "user1", Apellidos = "apellido 1", Nombres = "Usuario 1 Test", Password = "password1", RolId = 1 };
@@ -113,9 +112,9 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasIntegracion
             //preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
-            var seguridadService = new Mock<ISeguridad>();
+            var seguridadService = new Seguridad();
             var rolService = new RolRepository(context);
-            var usuarioService = new UsuarioRepository(context, seguridadService.Object, rolService);
+            var usuarioService = new UsuarioRepository(context, seguridadService, rolService);
 
             var rol = new Rol() { Nombre = "Rol Test" };
             context.Roles.Add(rol);
@@ -140,9 +139,9 @@ namespace Evaluacion.JCabrera.SistemaBuscador.Test.PruebasIntegracion
             //preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContex(nombreBd);
-            var seguridadService = new Mock<ISeguridad>();
+            var seguridadService = new Seguridad();
             var rolService = new RolRepository(context);
-            var usuarioService = new UsuarioRepository(context, seguridadService.Object, rolService);
+            var usuarioService = new UsuarioRepository(context, seguridadService, rolService);
 
             var rol = new Rol() { Nombre = "Rol Test" };
             context.Roles.Add(rol);
